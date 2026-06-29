@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>أيفيكس | AIVEX — التفعيل المجاني</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07080F;--bg2:#0B0D17;--bg3:#10131F;--bg4:#161A2A;
+  --gold:#C9A459;--gold2:#F0D896;--gold3:#8F6E2E;
+  --gold-glow:rgba(201,164,89,0.16);--gold-dim:rgba(201,164,89,0.08);
+  --gold-border:rgba(201,164,89,0.20);--gold-border2:rgba(201,164,89,0.40);
+  --gold-grad:linear-gradient(135deg,#C9A459 0%,#F0D896 50%,#9C7A35 100%);
+  --teal:#15C9A0;--teal2:#3DEFC4;
+  --teal-dim:rgba(21,201,160,0.08);--teal-border:rgba(21,201,160,0.20);
+  --tx:#ECE7DA;--tx2:rgba(236,231,218,0.56);--tx3:rgba(236,231,218,0.26);
+  --bd:rgba(255,255,255,0.055);--bd2:rgba(255,255,255,0.09);--bd3:rgba(255,255,255,0.15);
+  --red:#F0556C;--red-dim:rgba(240,85,108,0.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--tx);direction:rtl;min-height:100vh;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold3);border-radius:3px}
+.bg-grid{position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(201,164,89,0.022) 1px,transparent 1px),linear-gradient(90deg,rgba(201,164,89,0.022) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.bg-glow{position:fixed;top:-220px;left:50%;transform:translateX(-50%);width:760px;height:520px;background:radial-gradient(ellipse,rgba(201,164,89,0.06) 0%,transparent 65%);pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px 70px}
+
+/* NAV */
+.top-nav{width:100%;max-width:480px;display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold-border2);box-shadow:0 0 12px var(--gold-glow)}
+.nav-name .ar{font-size:10px;font-weight:700;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.5px;display:block}
+.nav-name .en{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:900;color:#fff;letter-spacing:2px;display:block}
+.nav-back{font-size:12.5px;font-weight:700;color:var(--tx2);text-decoration:none;border:1px solid var(--bd2);padding:7px 15px;border-radius:8px;transition:all .2s;display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--gold);border-color:var(--gold-border)}
+
+/* PAGE HEADER */
+.page-head{width:100%;max-width:480px;text-align:center;margin-bottom:26px}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold2);font-size:11px;font-weight:700;padding:6px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.3px}
+.page-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.page-title{font-family:'Cairo',sans-serif;font-size:clamp(23px,5.5vw,31px);font-weight:900;color:#fff;margin-bottom:9px;line-height:1.22;letter-spacing:-.3px}
+.page-title span{background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-sub{font-size:13.5px;color:var(--tx2);line-height:1.8;max-width:380px;margin:0 auto}
+
+/* ═══ LEDGER TIMELINE — SVG ICONS ═══ */
+.ledger{width:100%;max-width:480px;background:var(--bg2);border:1px solid var(--bd2);border-radius:18px;margin-bottom:20px;overflow:hidden;box-shadow:0 18px 48px rgba(0,0,0,.4)}
+.ledger::before{content:'';display:block;height:2px;background:var(--gold-grad)}
+.lg-item{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--bd)}
+.lg-item:last-child{border-bottom:none}
+.lg-icon{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center}
+.lg-icon svg{width:18px;height:18px}
+.lg-content{flex:1;padding-top:2px}
+.lg-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+.lg-desc{font-size:12.5px;color:var(--tx2);line-height:1.75}
+
+/* AFFILIATE CARD */
+.aff-card{width:100%;max-width:480px;background:linear-gradient(135deg,rgba(201,164,89,0.08),rgba(201,164,89,0.025));border:1px solid var(--gold-border);border-radius:18px;padding:22px;margin-bottom:20px;position:relative;overflow:hidden}
+.aff-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-grad)}
+.aff-card-label{font-size:10.5px;font-weight:700;letter-spacing:2px;color:var(--gold2);text-transform:uppercase;margin-bottom:10px}
+.aff-card-title{font-family:'Cairo',sans-serif;font-size:16px;font-weight:900;color:#fff;margin-bottom:7px}
+.aff-card-sub{font-size:12.5px;color:var(--tx2);line-height:1.75;margin-bottom:18px}
+.btn-open-aff{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;background:var(--gold-grad);color:#0A0700;padding:15px;border-radius:12px;font-size:14.5px;font-weight:900;text-decoration:none;font-family:'Tajawal',sans-serif;transition:all .22s;box-shadow:0 6px 24px var(--gold-glow)}
+.btn-open-aff:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(201,164,89,0.32)}
+.btn-open-aff svg{width:18px;height:18px;flex-shrink:0}
+
+/* CONDITIONS */
+.conditions{width:100%;max-width:480px;background:var(--bg2);border:1px solid var(--bd2);border-radius:16px;padding:20px;margin-bottom:20px}
+.cond-title{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--tx3);text-transform:uppercase;margin-bottom:14px}
+.cond-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.cond-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--tx2);line-height:1.65}
+.cond-icon-wrap{flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.cond-icon-wrap svg{width:16px;height:16px}
+.cond-icon-x svg{width:16px;height:16px}
+
+/* MAIN CARD */
+.card{width:100%;max-width:480px;background:var(--bg2);border:1px solid var(--bd2);border-radius:22px;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,.6);position:relative}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-grad);z-index:2}
+.card-body{padding:26px 24px 22px}
+
+/* FORM */
+.form-title{font-family:'Cairo',sans-serif;font-size:17px;font-weight:900;color:#fff;margin-bottom:5px}
+.form-sub{font-size:13px;color:var(--tx2);line-height:1.75;margin-bottom:20px}
+.divider{height:1px;background:var(--bd);margin:18px 0}
+.fg{margin-bottom:14px}
+.fl{font-size:12px;font-weight:700;color:var(--tx2);margin-bottom:6px;display:block;letter-spacing:.2px}
+.fl em{color:var(--red);font-style:normal;margin-right:2px}
+.fi{width:100%;background:var(--bg3);border:1px solid var(--bd2);border-radius:11px;padding:13px 14px;color:var(--tx);font-size:14px;font-family:'Tajawal',sans-serif;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fi:focus{border-color:var(--gold)}
+.fi::placeholder{color:var(--tx3)}
+.fhint{font-size:11px;color:var(--tx3);margin-top:5px;line-height:1.55}
+
+/* VERIFY */
+.verify-box{background:var(--bg3);border:1px solid var(--gold-border);border-radius:13px;padding:18px;margin-bottom:14px;display:none;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.verify-box.show{display:block}
+.verify-title{font-size:13px;font-weight:700;color:var(--gold2);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.verify-data{background:var(--bg4);border-radius:9px;padding:12px 14px;margin-bottom:14px;font-size:12.5px;color:var(--tx2);line-height:2}
+.verify-data b{color:#fff}
+.verify-q{font-size:13px;color:var(--tx2);margin-bottom:14px;text-align:center;font-weight:600}
+.verify-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vbtn-yes{background:var(--teal-dim);border:1px solid var(--teal-border);color:var(--teal);padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:all .2s;text-align:center;display:flex;align-items:center;justify-content:center;gap:7px}
+.vbtn-yes:hover{background:rgba(21,201,160,0.18)}
+.vbtn-yes svg{width:15px;height:15px;flex-shrink:0}
+.vbtn-no{background:rgba(255,255,255,0.03);border:1px solid var(--bd2);color:var(--tx2);padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;transition:all .2s;text-align:center}
+.vbtn-no:hover{border-color:var(--red);color:var(--red)}
+
+/* BUTTONS */
+.btn-main{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;text-align:center;background:var(--gold-grad);color:#0A0700;border:none;padding:16px;border-radius:12px;font-size:15.5px;font-weight:900;cursor:pointer;text-decoration:none;font-family:'Tajawal',sans-serif;transition:all .22s;margin-bottom:10px;box-shadow:0 6px 24px var(--gold-glow)}
+.btn-main:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(201,164,89,0.32)}
+.btn-main svg{width:18px;height:18px;flex-shrink:0}
+.btn-support{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;text-align:center;background:transparent;border:1px solid var(--bd2);color:var(--tx2);padding:13px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;font-family:'Tajawal',sans-serif;transition:all .22s}
+.btn-support:hover{border-color:var(--teal-border);color:var(--teal)}
+.btn-support svg{width:16px;height:16px;flex-shrink:0}
+
+/* SUCCESS */
+.success-state{display:none;text-align:center;padding:40px 20px}
+.success-state.show{display:block}
+.success-icon-wrap{width:64px;height:64px;border-radius:50%;background:var(--teal-dim);border:1.5px solid var(--teal-border);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;animation:pop .4s ease}
+.success-icon-wrap svg{width:30px;height:30px}
+@keyframes pop{from{transform:scale(.5)}to{transform:scale(1)}}
+.success-title{font-family:'Cairo',sans-serif;font-size:22px;font-weight:900;color:#fff;margin-bottom:10px}
+.success-sub{font-size:14px;color:var(--tx2);line-height:1.9;margin-bottom:24px}
+.success-badge{display:inline-flex;align-items:center;gap:8px;background:var(--teal-dim);border:1px solid var(--teal-border);color:var(--teal);font-size:13px;font-weight:700;padding:9px 20px;border-radius:8px;margin-bottom:24px}
+
+/* RISK */
+.risk-note{background:var(--red-dim);border:1px solid rgba(240,85,108,0.12);border-radius:10px;padding:11px 14px;margin-top:16px;font-size:11.5px;color:rgba(240,85,108,.75);line-height:1.65;text-align:center;display:flex;align-items:flex-start;gap:8px;justify-content:center}
+.risk-note svg{width:14px;height:14px;flex-shrink:0;margin-top:1px}
+
+/* HOW-TO — SVG STEP ICONS */
+.howto{width:100%;max-width:480px;margin-top:30px}
+.howto-head{text-align:center;margin-bottom:22px}
+.howto-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:700;letter-spacing:2px;color:var(--gold2);text-transform:uppercase;margin-bottom:12px}
+.howto-eyebrow::before,.howto-eyebrow::after{content:'';width:18px;height:1px;background:var(--gold-border2)}
+.howto-title{font-family:'Cairo',sans-serif;font-size:clamp(20px,5vw,26px);font-weight:900;color:#fff;line-height:1.3;margin-bottom:10px}
+.howto-title span{background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.howto-sub{font-size:13px;color:var(--tx2);line-height:1.85;max-width:380px;margin:0 auto}
+
+.howto-list{display:flex;flex-direction:column;gap:14px}
+.howto-card{position:relative;background:var(--bg2);border:1px solid var(--bd2);border-radius:16px;padding:20px 20px 20px 22px;display:flex;gap:16px;transition:border-color .25s}
+.howto-card:hover{border-color:var(--gold-border2)}
+.howto-step-icon{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--gold-grad);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px var(--gold-glow);position:relative}
+.howto-step-icon svg{width:22px;height:22px}
+.howto-card:not(:last-child) .howto-step-icon::after{content:'';position:absolute;top:48px;right:50%;width:1.5px;height:32px;background:linear-gradient(to bottom,var(--gold-border2),transparent)}
+.howto-body{flex:1;padding-top:2px}
+.howto-card-title{font-size:14.5px;font-weight:800;color:#fff;margin-bottom:5px}
+.howto-card-desc{font-size:12.5px;color:var(--tx2);line-height:1.75}
+.howto-warn{margin-top:12px;background:var(--bg3);border:1px solid var(--gold-border);border-radius:11px;padding:12px 14px;font-size:11.5px;color:rgba(236,231,218,.7);line-height:1.7;display:flex;gap:8px;align-items:flex-start}
+.howto-warn svg{width:14px;height:14px;flex-shrink:0;margin-top:2px}
+.howto-warn b{color:var(--gold2);font-weight:700}
+
+@media(max-width:420px){.wrap{padding:20px 12px 60px}.card-body{padding:20px 16px 18px}.howto-card{padding:17px 16px 17px 18px;gap:13px}.howto-step-icon{width:38px;height:38px}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="wrap">
+
+<!-- NAV -->
+<div class="top-nav">
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo" alt="أيفيكس" src="https://i.postimg.cc/J45gyPpT/20260626-085952.jpg"/>
+    <div class="nav-name">
+      <span class="ar">أيفيكس</span>
+      <span class="en">𝘼𝙄𝙑𝙀𝙓</span>
+    </div>
+  </a>
+  <a class="nav-back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg>
+    الرئيسية
+  </a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-head">
+  <div class="page-badge"><span class="dot"></span> تفعيل مجاني</div>
+  <h1 class="page-title">احصل على <span>أيفيكس مجاناً</span></h1>
+  <p class="page-sub">مدير الجلسة الذكي الذي يحسب صفقاتك، يحميك من الانهيار، ويقرر معك — بلا اشتراك ولا دفع، فقط حساب تداول جديد توثّقه</p>
+</div>
+
+<!-- LEDGER TIMELINE — SVG ICONS -->
+<div class="ledger">
+  <div class="lg-item">
+    <div class="lg-icon">
+      <!-- Link / Registration icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+      </svg>
+    </div>
+    <div class="lg-content">
+      <div class="lg-title">سجّل عبر رابط الوكالة</div>
+      <div class="lg-desc">افتح رابط التسجيل أدناه وأنشئ حساباً جديداً في Pocket Option — لا ينطبق على حسابات موجودة مسبقاً</div>
+    </div>
+  </div>
+  <div class="lg-item">
+    <div class="lg-icon">
+      <!-- Shield / Verify icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+    </div>
+    <div class="lg-content">
+      <div class="lg-title">وثّق حسابك وأودع 200$+</div>
+      <div class="lg-desc">أكمل توثيق الهوية داخل Pocket Option، ثم أودع 200$ أو أكثر — هذا المبلغ يبقى في حسابك للتداول</div>
+    </div>
+  </div>
+  <div class="lg-item">
+    <div class="lg-icon">
+      <!-- Send / Submit icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </div>
+    <div class="lg-content">
+      <div class="lg-title">أرسل بياناتك للتحقق</div>
+      <div class="lg-desc">أدخل اسمك وإيميلك ورقم حسابك في النموذج أدناه — سنتحقق ونفعّل حسابك مباشرة</div>
+    </div>
+  </div>
+</div>
+
+<!-- AFFILIATE CARD -->
+<div class="aff-card">
+  <div class="aff-card-label">الخطوة الأولى</div>
+  <div class="aff-card-title">رابط التسجيل الخاص بأيفيكس</div>
+  <div class="aff-card-sub">تأكد من التسجيل من هذا الرابط تحديداً حتى يُربط حسابك بوكالتنا، وتحصل على نظام إدارة المال الكامل دون أي مقابل</div>
+  <a class="btn-open-aff" href="https://u3.shortink.io/smart/mCmFMjtKiJEQac" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+    </svg>
+    فتح رابط التسجيل
+  </a>
+</div>
+
+<!-- CONDITIONS -->
+<div class="conditions">
+  <div class="cond-title">شروط الحصول المجاني</div>
+  <ul class="cond-list">
+    <li>
+      <span class="cond-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </span>
+      الحساب جديد في Pocket Option (لم يُسجَّل مسبقاً)
+    </li>
+    <li>
+      <span class="cond-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </span>
+      التسجيل يتم من رابط وكالة أيفيكس تحديداً
+    </li>
+    <li>
+      <span class="cond-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </span>
+      إتمام توثيق الهوية داخل المنصة
+    </li>
+    <li>
+      <span class="cond-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </span>
+      إيداع 200$ أو أكثر داخل الحساب (المبلغ يبقى لك)
+    </li>
+    <li>
+      <span class="cond-icon-wrap cond-icon-x">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </span>
+      لا ينطبق على حسابات موجودة أو غير موثقة
+    </li>
+  </ul>
+</div>
+
+<!-- FORM CARD -->
+<div class="card">
+  <div class="card-body">
+
+    <div class="success-state" id="success-state">
+      <div class="success-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <div class="success-title">تم إرسال طلبك!</div>
+      <div class="success-sub">تم فتح تيليجرام مع رسالتك الجاهزة.<br/>سنتحقق من بياناتك ونفعّل حسابك خلال 24 ساعة.</div>
+      <div class="success-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        قيد المراجعة
+      </div>
+      <a class="btn-support" href="https://t.me/AIVEX_Trade_Hub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        تواصل مع الدعم
+      </a>
+    </div>
+
+    <div id="form-wrap">
+      <div class="form-title">الخطوة الثانية — أرسل بياناتك</div>
+      <div class="form-sub">بعد التسجيل والتوثيق والإيداع، أدخل بياناتك وسنتحقق ونرسل لك رابط الدخول</div>
+      <div class="divider"></div>
+      <div class="fg">
+        <label class="fl">اسمك <em>*</em></label>
+        <input class="fi" id="f-name" type="text" placeholder="اسمك الكامل"/>
+      </div>
+      <div class="fg">
+        <label class="fl">إيميلك <em>*</em></label>
+        <input class="fi" id="f-email" type="email" placeholder="example@email.com"/>
+        <div class="fhint">نفس الإيميل المسجل في Pocket Option</div>
+      </div>
+      <div class="fg">
+        <label class="fl">رقم حسابك في Pocket Option <em>*</em></label>
+        <input class="fi" id="f-account" type="text" placeholder="موجود في ملفك الشخصي داخل المنصة"/>
+      </div>
+
+      <div class="verify-box" id="verify-box">
+        <div class="verify-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          راجع بياناتك
+        </div>
+        <div class="verify-data" id="verify-data"></div>
+        <div class="verify-q">هل البيانات صحيحة؟</div>
+        <div class="verify-btns">
+          <div class="vbtn-yes" onclick="confirmSend()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            صحيحة — أرسل الطلب
+          </div>
+          <div class="vbtn-no" onclick="cancelVerify()">تعديل</div>
+        </div>
+      </div>
+
+      <div id="form-btns">
+        <button class="btn-main" onclick="submitForm()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+          إرسال طلب التفعيل المجاني
+        </button>
+        <a class="btn-support" href="https://t.me/AIVEX_Trade_Hub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          الدعم والاستفسار
+        </a>
+      </div>
+    </div>
+
+    <div class="risk-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      التفعيل المجاني مشروط بالتحقق من التسجيل والتوثيق والإيداع عبر رابط الوكالة.
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="howto">
+  <div class="howto-head">
+    <div class="howto-eyebrow">دليل التفعيل المجاني</div>
+    <h2 class="howto-title">حسابك يفتح <span>أيفيكس مجاناً</span></h2>
+    <p class="howto-sub">لا اشتراك، لا دفع — فقط حساب تداول جديد توثّقه وتودع فيه، والمبلغ يبقى لك بالكامل تتداول به كما تشاء</p>
+  </div>
+  <div class="howto-list">
+
+    <div class="howto-card">
+      <div class="howto-step-icon">
+        <!-- Step 1: Link icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0A0700" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+      </div>
+      <div class="howto-body">
+        <div class="howto-card-title">سجّل حساباً جديداً عبر رابط الوكالة</div>
+        <div class="howto-card-desc">افتح رابط التسجيل أعلاه وأنشئ حسابك في Pocket Option من خلاله مباشرة — هذا الربط بوكالة أيفيكس هو الشرط الذي يفتح لك التفعيل المجاني.</div>
+        <div class="howto-warn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <span><b>شرط أساسي:</b> يجب أن يكون الحساب جديداً تماماً. الحسابات المسجّلة من قبل أو خارج رابط الوكالة لا تستوفي شرط العرض.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="howto-card">
+      <div class="howto-step-icon">
+        <!-- Step 2: Shield check icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0A0700" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+      <div class="howto-body">
+        <div class="howto-card-title">وثّق هويتك وأودع 200$ أو أكثر</div>
+        <div class="howto-card-desc">أكمل توثيق الهوية داخل المنصة، ثم أودع 200 دولار أو أكثر في حسابك. هذا المبلغ ملكك بالكامل، ويبقى تحت تصرفك للتداول وقتما تشاء.</div>
+      </div>
+    </div>
+
+    <div class="howto-card">
+      <div class="howto-step-icon">
+        <!-- Step 3: Send icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0A0700" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </div>
+      <div class="howto-body">
+        <div class="howto-card-title">أرسل بياناتك ونحن نتحقق</div>
+        <div class="howto-card-desc">أدخل اسمك وإيميلك ورقم حسابك في النموذج أعلاه. فريقنا يراجع التسجيل والإيداع خلال 24 ساعة، ثم يصلك رابط الدخول — ومن لحظتها، محرك الاستراتيجيات والحماية التلقائية والمساعد الذكي يعملون معك في كل صفقة.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+<script>
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const account=document.getElementById('f-account').value.trim();
+  if(!name||!email||!account){alert('يرجى ملء جميع الحقول المطلوبة (*)');return;}
+  const html=`<b>الاسم:</b> ${name}<br><b>الإيميل:</b> ${email}<br><b>رقم الحساب (PO):</b> ${account}`;
+  document.getElementById('verify-data').innerHTML=html;
+  document.getElementById('verify-box').classList.add('show');
+  document.getElementById('form-btns').style.display='none';
+}
+function cancelVerify(){
+  document.getElementById('verify-box').classList.remove('show');
+  document.getElementById('form-btns').style.display='';
+}
+function confirmSend(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const account=document.getElementById('f-account').value.trim();
+  const msg=`🟢 طلب تفعيل مجاني — أيفيكس | AIVEX\n\n👤 الاسم: ${name}\n📧 الإيميل: ${email}\n🎮 رقم حساب Pocket Option: ${account}\n\nسجّلت عبر رابط الوكالة وأودعت 200$+ — أرجو التفعيل`;
+  window.open('https://t.me/AIVEX_Trade_Hub?text='+encodeURIComponent(msg),'_blank');
+  document.getElementById('form-wrap').style.display='none';
+  document.getElementById('success-state').classList.add('show');
+}
+</script>
+</body>
+</html>
